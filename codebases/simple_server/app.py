@@ -5,11 +5,12 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def get_home():
-    return "Hello, world!"
+    return "Hello, from EC2! changing again"
 
 if __name__ == '__main__':
     app.run(
-      debug=True,
-      port=5001,
-      host="0.0.0.0" # Listen for connections _to_ any server
+        debug=True,
+        port=5001,
+        host="0.0.0.0" # Listen for connections _to_ any server
     )
+    
