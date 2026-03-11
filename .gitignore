@@ -2,3 +2,6 @@
 **/deploy.sh
 **/*.pem
 **/__pycache__
+.pytest_cache
+**/message.env
+.DS_Store
