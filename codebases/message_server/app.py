@@ -10,13 +10,13 @@ def get_database_url():
     # This is determined by the `APP_ENV` environment variable.
     # Having dev and production modes is quite a common pattern and you will
     # see it in many real-world applications.
-    if os.environ.get("APP_ENV") == "DOCKER_DEV":
+    if os.environ.get("APP_ENV") == "PRODUCTION":
         user = os.environ.get("POSTGRES_USER")
         password = os.environ.get("POSTGRES_PASSWORD")
         host = os.environ.get("POSTGRES_HOST")
         db = os.environ.get("POSTGRES_DB", "postgres")
         return f"postgresql://{user}:{password}@{host}:5432/{db}"
-    # elif os.environ.get("APP_ENV") == "DOCKER_DEV":
+    elif os.environ.get("APP_ENV") == "DOCKER_DEV":
         # This URL is for our local database
         # If you see a connection error, you may need to edit this URL
         return "postgres://postgres@host.docker.internal:5432/postgres"
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     # We also run the server differently depending on the environment.
     # In production we don't want the fancy error messages — users won't know
     # what to do with them. So no `debug=True`
-    if os.environ.get("APP_ENV") == "DOCKER_DEV":
+    if os.environ.get("APP_ENV") == "PRODUCTION":
         app.run(port=5003, host='0.0.0.0')
     else:
         app.run(debug=True, port=5003, host='0.0.0.0')
