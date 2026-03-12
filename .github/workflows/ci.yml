@@ -35,7 +35,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
+      - name: Run message-server tests
         run: |
-          pytest
-
+          pytest codebases/message_server/tests
+      - name: Run simple-server tests
+        run: |
+          pytest codebases/simple_server/tests
