@@ -47,20 +47,20 @@ app = Flask(__name__)
 
 # Below are two fairly ordinary Flask routes
 
-@app.route("/")
-def get_messages():
-    # Connect to the database
-    connection = psycopg.connect(POSTGRES_URL)
+# @app.route("/")
+# def get_messages():
+#     # Connect to the database
+#     connection = psycopg.connect(POSTGRES_URL)
 
-    # Run some SQL
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM messages;")
+#     # Run some SQL
+#     cursor = connection.cursor()
+#     cursor.execute("SELECT * FROM messages;")
 
-    # Get the results
-    rows = cursor.fetchall()
+#     # Get the results
+#     rows = cursor.fetchall()
 
-    # Format the results and add a form too
-    return "<h2>Your Messages</h2>" + format_messages(rows) + generate_form()
+#     # Format the results and add a form too
+#     return "<h2>Your Messages</h2>" + format_messages(rows) + generate_form()
 
 # These two methods generate HTML lists and forms
 def format_messages(messages):
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     # We also run the server differently depending on the environment.
     # In production we don't want the fancy error messages — users won't know
     # what to do with them. So no `debug=True`
-    if os.environ.get("APP_ENV") == "PRODUCTIO":
+    if os.environ.get("APP_ENV") == "PRODUCTION":
         app.run(port=5002, host='0.0.0.0')
     else:
         app.run(debug=True, port=5002, host='0.0.0.0')
