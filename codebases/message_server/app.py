@@ -16,7 +16,7 @@ def get_database_url():
         host = os.environ.get("POSTGRES_HOST")
         db = os.environ.get("POSTGRES_DB", "postgres")
         return f"postgresql://{user}:{password}@{host}:5432/{db}"
-    # elif os.environ.get("APP_ENV") == "DOCKER_DEV":
+    elif os.environ.get("APP_ENV") == "PRODUCTION":
         # This URL is for our local database
         # If you see a connection error, you may need to edit this URL
         return "postgres://postgres@host.docker.internal:5432/postgres"
