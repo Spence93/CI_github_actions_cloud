@@ -34,7 +34,7 @@ jobs:
           script: |
             set -euo pipefail
             cd ~/message-server-dev
-            docker build --pull -t message-server-dev:latest -f ./codebases/message_server/Dockerfile 
+            docker build --pull -t message-server-dev:latest -f ./codebases/message_server/Dockerfile .
             docker stop message-server-dev || true
             docker rm message-server-dev || true
             docker image prune -f || true
